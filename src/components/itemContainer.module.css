@@ -1,0 +1,20 @@
+.Gbutton{
+    width:80px;
+}
+.Grow{
+    margin-top: 8px;
+}
+.item_Container{
+    text-align:left;
+    padding-left: 10px;
+}
+.nameContainer{
+    background: radial-gradient(circle, rgba(41,98,132,1) 0%, rgba(0,0,0,1) 100%);
+    color:rgb(202, 228, 182);
+    border-color: aquamarine;
+}
+.dateContainer{
+    background: radial-gradient(circle, rgba(41,98,132,1) 0%, rgba(0,0,0,1) 100%);
+    color:rgb(202, 228, 182);
+    border-color: aquamarine;
+}
