@@ -1,12 +1,12 @@
 
 import ItemContainer from "./itemContainer";
 
-const TodoItem = ({ todoItems }) => {
+const TodoItem = ({ todoItems,handleDelete }) => {
     return (
         <>
             <div className="items-container">
                 {todoItems.map((item)=>(
-                <ItemContainer todoDate={item.dueDate} todoName={item.name} />
+                <ItemContainer todoDate={item.dueDate} todoName={item.name} handleDelete={handleDelete} />
                 ))}
             </div>
         </>

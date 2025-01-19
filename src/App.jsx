@@ -1,31 +1,60 @@
-import AppName from "./components/AppName";
-import AddTodo from "./components/AddTodo";
-import ItemContainer from "./components/itemContainer";
-import TodoItem from "./components/todoItems";
-import "./App.css";
+  import AppNameBar from "./components/AppNameBar";
+  import AddTodo from "./components/AddTodo";
+  import WelcomeMessage from "./components/welcomeMessage";
+  import TodoItems from "./components/todoItems";
+  import "./App.css";
+  import { useState } from "react";
 
-function App() {
-  const todoItems= [
-    {
-    name:'buy Milk',
-    dueDate:'4/10/2024'
-    },
-    {
-      name:'Go to College',
-      dueDate:'05/09/2025'
-    },
-    {
-      name:'sleep',
-      dueDate:'02/04/2026'
-    }
-  ]
-  return (
-    <center className="todo-container">
-      <AppName />
-      <AddTodo />
-      <TodoItem todoItems={todoItems} />
-    </center>
-  );
-}
+  function App() {
+    
+  
+    let initialTodo = [];
 
-export default App;
+    let [todoItems,setTodoItems]=useState(initialTodo);
+
+    const onClickAdd = (nameValue, dueDateValue) => {
+     
+      if (nameValue.trim() === "" || dueDateValue.trim() === "") {
+        alert("Enter a valid value");
+      } else {
+        const bool = todoItems.some(
+          (item) =>
+            item.name.toLowerCase() === nameValue.trim().toLowerCase() &&
+            item.dueDate === dueDateValue.trim()
+        );
+    
+        if (bool) {
+          alert("Already Entered");
+        } else {
+          const newTodo = [
+            ...todoItems,
+            { name: nameValue.trim(), dueDate: dueDateValue.trim() },
+          ];
+          setTodoItems(newTodo);
+        }
+      }
+    };
+    
+  const onClickDelete=(todoName)=>{
+  
+      const newTodo = todoItems.filter((item)=>item.name !== todoName);
+      setTodoItems(newTodo);
+
+  }
+    
+    return (
+      <>
+      <div>
+          <AppNameBar />
+      </div>
+      <center className="todo-container">
+          <AddTodo handleInput={onClickAdd} />
+          {todoItems.length===0&&<WelcomeMessage/>}
+          <TodoItems todoItems={todoItems} handleDelete={onClickDelete} />
+        </center>
+      </>
+      
+    );
+  }
+
+  export default App;

@@ -1,17 +1,47 @@
+import { useState } from "react";
 import styles from "./AddTodo.module.css"
 
-export default function AddTodo() {
-    return <div class="container text-center">
-        <div class="row">
-            <div class="col-6">
-                <input  type="text" placeholder="Enter the task" />
+export default function AddTodo({handleInput}) {
+
+    let [TaskValue,setTaskValue] = useState();
+    let [dateValue,setDateValue] = useState();
+
+    const inputTask=(event)=>{
+       
+         setTaskValue(event.target.value);
+        
+    }
+    const inputDate=(event)=>{
+           setDateValue(event.target.value);
+    }
+    const addButtonClicked=()=>{
+        handleInput(TaskValue,dateValue);
+        setTaskValue("");
+        setDateValue("");
+    }
+
+    return (
+    <div className={`container text-center ${styles.inputContainer}`}>
+        <div className={`row ${styles.inputContainer}`}>
+            <div className={`col-6 ${styles.inputContainer}`}>
+                <input  type="text"
+                className={`${styles.inputbox} form-control me-2`}
+                 placeholder="Enter the task" 
+                 value={TaskValue}
+                 onChange={(event)=>{inputTask(event)}} />
             </div>
-            <div class="col-4">
-                <input  type="date" />
+            <div className={`col-4 ${styles.inputContainer}`}>
+                <input  type="date"
+                 className={`${styles.inputbox} ${styles.date} form-control me-2`}
+                 value={dateValue} 
+                 onChange={(event)=>{inputDate(event)}} />
             </div>
-            <div class="col-2">
-                <button class={`${styles["Gbutton"]} btn btn-success`}>Add</button>
+            <div className={`col-2 ${styles.inputContainer}`}>
+                <button 
+                  className={`${styles["Gbutton"]} btn btn-success`}
+                  onClick={addButtonClicked} >Add</button>
             </div>
         </div>
     </div>
+    )
 }

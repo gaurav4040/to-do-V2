@@ -1,0 +1,14 @@
+
+.welcomeContainer{
+    margin-top:100px ;
+    
+}
+.welcomeText{
+    font-size:50px ;
+    font-family:'Times New Roman', Times, serif;
+    font-weight:600;
+    color:transparent;
+    background: rgb(36,33,0);
+    background: linear-gradient(90deg, rgba(36,33,0,1) 0%, rgba(9,121,117,1) 52%, rgba(147,0,255,1) 100%);
+    -webkit-background-clip:text;
+}

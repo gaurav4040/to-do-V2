@@ -1,20 +1,37 @@
 .Gbutton{
+    display:;
     width:80px;
 }
-.Grow{
-    margin-top: 8px;
-}
 .item_Container{
-    text-align:left;
-    padding-left: 10px;
+    margin-top: 30px;
+    background: none;
+}
+.taskContainer{
+    margin-left:5% ;
+    width:75.1%;
+    align-items: center;
+    text-align: center;
+    background:rgba(5, 7, 95, 0.17);
+    border: 1px solid rgb(179, 179, 179);
+    border-radius:10px;
+}
+.value_Container{
+    padding-top: 6px;
+    text-align:center;
+    padding-left: 30px;
 }
 .nameContainer{
-    background: radial-gradient(circle, rgba(41,98,132,1) 0%, rgba(0,0,0,1) 100%);
-    color:rgb(202, 228, 182);
-    border-color: aquamarine;
+    background: none;
+    height: 100%;
+    color:rgb(0, 0, 0);
+    border-right:1px solid rgb(179, 179, 179) ;
 }
 .dateContainer{
-    background: radial-gradient(circle, rgba(41,98,132,1) 0%, rgba(0,0,0,1) 100%);
-    color:rgb(202, 228, 182);
+    background:none;
+    color:rgb(0, 0, 0);
     border-color: aquamarine;
+}
+.buttonContainer{
+    float:right;
+    background: none;
 }
