@@ -4,20 +4,21 @@
   import TodoItems from "./components/todoItems";
   import "./App.css";
   import { useState } from "react";
+  import { todoItemsContext } from "./store/todo-Items-store";
 
   function App() {
     
   
     let initialTodo = [];
 
-    let [todoItems,setTodoItems]=useState(initialTodo);
+    let [todoItemsArray,setTodoItems]=useState(initialTodo);
 
     const onClickAdd = (nameValue, dueDateValue) => {
      
       if (nameValue.trim() === "" || dueDateValue.trim() === "") {
         alert("Enter a valid value");
       } else {
-        const bool = todoItems.some(
+        const bool = todoItemsArray.some(
           (item) =>
             item.name.toLowerCase() === nameValue.trim().toLowerCase() &&
             item.dueDate === dueDateValue.trim()
@@ -27,31 +28,36 @@
           alert("Already Entered");
         } else {
           const newTodo = [
-            ...todoItems,
+            ...todoItemsArray,
             { name: nameValue.trim(), dueDate: dueDateValue.trim() },
           ];
-          setTodoItems(newTodo);
+          setTodoItems((currValue)=>[
+            ...currValue,
+            {name:nameValue.trim(),dueDate:dueDateValue.trim()},
+          ]);
         }
       }
     };
     
   const onClickDelete=(todoName)=>{
   
-      const newTodo = todoItems.filter((item)=>item.name !== todoName);
+      const newTodo = todoItemsArray.filter((item)=>item.name !== todoName);
       setTodoItems(newTodo);
 
   }
     
     return (
       <>
-      <div>
-          <AppNameBar />
-      </div>
-      <center className="todo-container">
-          <AddTodo handleInput={onClickAdd} />
-          {todoItems.length===0&&<WelcomeMessage/>}
-          <TodoItems todoItems={todoItems} handleDelete={onClickDelete} />
-        </center>
+      <todoItemsContext.Provider value={todoItemsArray} >
+        <div>
+            <AppNameBar />
+        </div>
+        <center className="todo-container">
+            <AddTodo handleInput={onClickAdd} />
+            <WelcomeMessage />
+            <TodoItems handleDelete={onClickDelete} />
+          </center>
+      </todoItemsContext.Provider >
       </>
       
     );

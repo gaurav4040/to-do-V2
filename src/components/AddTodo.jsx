@@ -1,4 +1,4 @@
-import { useState,useRef } from "react";
+import { useRef } from "react";
 import styles from "./AddTodo.module.css"
 
 export default function AddTodo({handleInput}) {
@@ -10,6 +10,8 @@ export default function AddTodo({handleInput}) {
         event.preventDefault();
         const name=todoName.current.value;
         const date=todoDate.current.value;
+        todoName.current.value="";
+        todoDate.current.value="";
         handleInput(name,date);
     }
 
@@ -21,14 +23,14 @@ export default function AddTodo({handleInput}) {
                 ref={todoName}
                 className={`${styles.inputbox} form-control me-2`}
                  placeholder="Enter the task" 
-                 value={TaskValue}
+                //  value={TaskValue}
                   />
             </div>
             <div className={`col-4 ${styles.inputContainer}`}>
                 <input  type="date"
                 ref={todoDate}
                  className={`${styles.inputbox} ${styles.date} form-control me-2`}
-                 value={dateValue} 
+                //  value={dateValue} 
                  />
             </div>
             <div className={`col-2 ${styles.inputContainer}`}>
@@ -39,4 +41,4 @@ export default function AddTodo({handleInput}) {
         </form>
     </div>
     )
-}
+};

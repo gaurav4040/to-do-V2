@@ -1,7 +1,11 @@
-
+import { todoItemsContext } from "../store/todo-Items-store";
+import { useContext } from "react";
 import ItemContainer from "./itemContainer";
 
-const TodoItem = ({ todoItems,handleDelete }) => {
+const TodoItem = ({handleDelete }) => {
+
+    const todoItems = useContext(todoItemsContext);
+
     return (
         <>
             <div className="items-container">
