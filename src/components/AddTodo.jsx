@@ -1,7 +1,11 @@
-import { useRef } from "react";
+import { useContext, useRef } from "react";
 import styles from "./AddTodo.module.css"
+import { TodoItemsContext } from "../store/todo-Items-store";
 
-export default function AddTodo({handleInput}) {
+export default function AddTodo() {
+
+    let contextObj = useContext(TodoItemsContext);
+    let handleInput = contextObj.addNewItem;
 
     let todoName=useRef();
     let todoDate=useRef();
@@ -10,9 +14,9 @@ export default function AddTodo({handleInput}) {
         event.preventDefault();
         const name=todoName.current.value;
         const date=todoDate.current.value;
+        handleInput(name,date);
         todoName.current.value="";
         todoDate.current.value="";
-        handleInput(name,date);
     }
 
     return (

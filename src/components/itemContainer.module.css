@@ -1,5 +1,4 @@
 .Gbutton{
-    display:;
     width:80px;
 }
 .item_Container{
@@ -11,6 +10,7 @@
     width:75.1%;
     align-items: center;
     text-align: center;
+    color:black;
     background:rgba(5, 7, 95, 0.17);
     border: 1px solid rgb(179, 179, 179);
     border-radius:10px;
@@ -29,7 +29,7 @@
 .dateContainer{
     background:none;
     color:rgb(0, 0, 0);
-    border-color: aquamarine;
+    border-color: rgb(9, 11, 11);
 }
 .buttonContainer{
     float:right;
